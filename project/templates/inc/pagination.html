@@ -1,0 +1,49 @@
+{# Pagination include #}
+
+{% if page.paginator.num_pages > 1 %}
+
+<div class="paginator-wrapper container text-center infinite-paginator">
+
+    <nav>
+        <ul class="pagination">
+            {% if page.has_previous %}
+                <li>
+                    <a href="{{ previous_href }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="disabled">
+                    <span>
+                        <span aria-hidden="true">&laquo;</span>
+                    </span>
+                </li>
+            {% endif %}
+
+            {% for page_num in page.paginator.page_range %}
+                {% if page_num == 1 %}
+                    <li{% if page_num == page.number %} class="active"{% endif %}><a href="{% url index_url_pattern %}">1</a></li>
+                {% else %}
+                    <li{% if page_num == page.number %} class="active"{% endif %}><a href="{% url page_url_pattern page=page_num %}">{{ page_num }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page.has_next %}
+                <li>
+                    <a href="{{ next_href }}" aria-label="Next" class="infinite-more-link">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% else %}
+                <li class="disabled">
+                    <span>
+                        <span aria-hidden="true">&raquo;</span>
+                    </span>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+</div>
+
+{% endif %}

@@ -1,0 +1,145 @@
+/**
+ * Footer style
+ */
+
+@import "utils/fonts";
+
+#footer {
+
+    &, a, a:focus, a:active {
+        color: $white;
+    }
+
+    a:hover {
+        color: $light-brown;
+    }
+
+    padding: 15px 0;
+    background-color: $brown;
+
+
+    // Style address
+    .address {
+        margin-top: 20px;
+
+        .address-part {
+            margin: 10px 0;
+        }
+
+        @media (max-width: $screen-sm-max) {
+            text-align: right;
+            padding-right: 30px;
+        }
+
+        @media (max-width: $screen-xs-max) {
+            text-align: left;
+            padding-left: 30px;
+            padding-right: 0;
+        }
+    }
+
+    // Style quicknav
+    .quicklinks {
+
+        ul {
+            list-style-type: none;
+        }
+
+        .main {
+            text-transform: uppercase;
+            @include bold();
+            font-size: 16px;
+            padding: 0;
+
+            a {
+                text-decoration: none;
+                padding: 2px;
+                padding-left: 30px;
+                display: block;
+            }
+
+            .active, li:hover {
+
+                a {
+
+                    position: relative;
+
+                    &:before {
+                        @include fontello-font();
+                        content: "\E806";
+                        position: absolute;
+                        top: 3px;
+                        left: 0;
+                        color: $white;
+                        font-size: 20px;
+                    }
+
+                }
+            }
+
+            .active a {
+                color: $light-brown;
+
+                &:hover:before {
+                    color: $light-brown;
+                }
+            }
+
+            &:after {
+                content: " ";
+                display: block;
+                border-top: 1px solid $white;
+                max-width: 166px;
+                margin-top:15px;
+                margin-left: 30px;
+            }
+        }
+
+        .social {
+
+            font-size: 18px;
+            padding-left: 30px;
+
+            li {
+                display: inline-block;
+
+                a {
+                    display: block;
+                    padding: 2px;
+                }
+            }
+        }
+
+    }
+
+    // Logo footer style
+    .logo-footer {
+        min-height: 160px;
+        height: 100%;
+        background: {
+            position: center center;
+        }
+
+    }
+
+    .footer-col {
+        margin: 15px 0;
+        border-right: 1px solid $white;
+
+        &:nth-child(2) {
+            border-right: none;
+        }
+
+        @media (max-width: $screen-sm-max) {
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+        @media (max-width: $screen-xs-max) {
+            &:first-child {
+                border-right: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+{% load format_phone from utilities %}
+{% load format_btw from utilities %}
+{% load active_url from utilities %}
+{% load trans from i18n %}
+
+<footer id="footer">
+    <div class="container">
+
+        {# Info #}
+        <div class="col-md-4 col-md-push-4 col-sm-6 text-center footer-col">
+            <div class="address">
+                <address class="address-part">
+                    Lieverstedestraat 23<br />
+                    B &dash; 8020 Oostkamp
+                </address>
+                {% if site_settings.email %}
+                <p class="address-part">
+                    <a href="{{ site_settings.mailto }}" title="{{ site_settings.email }}">{{ site_settings.email }}</a>
+                </p>
+                {% endif %}
+                {% if site_settings.phone or site_settings.btw %}
+                <p class="address-part">
+                    {% if site_settings.phone %}
+                    T: {{ site_settings.phone|format_phone }}
+                    {% endif %}
+                    {% if site_settings.phone and site_settings.btw %}<br />{% endif %}
+                    {% if site_settings.btw %}
+                    BTW. Nr.: {{ site_settings.btw|format_btw }}
+                    {% endif %}
+                </p>
+                {% endif %}
+            </div>
+        </div>
+
+        {# Quicknav #}
+        <div class="col-md-4 col-md-push-4 col-sm-6 footer-col">
+            <nav class="quicklinks">
+                {# Main links #}
+                <ul class="main">
+                    {# Portfolio index #}
+                    <li {% if request|active_url:"portfolio:index" %}class="active"{% endif %}>
+                        <a href="{% url "portfolio:index" %}">{% trans "Projecten" %}</a>
+                    </li>
+
+                    {# News index #}
+                    <li {% if request|active_url:"news:index" %}class="active"{% endif %}>
+                        <a href="{% url "news:index" %}">{% trans "Nieuws" %}</a>
+                    </li>
+
+                    {# About index #}
+                    <li {% if request|active_url:"about:index" %}class="active"{% endif %}>
+                        <a href="{% url "about:index" %}">{% trans "Over ons" %}</a>
+                    </li>
+
+                    {# Contact index #}
+                    <li {% if request|active_url:"contact:index" %}class="active"{% endif %}>
+                        <a href="{% url "contact:index" %}">{% trans "Contact" %}</a>
+                    </li>
+                </ul>
+
+                {# Social links #}
+                <ul class="social">
+                    {% for link in site_settings.social %}
+                    <li><a href="{{ link.url }}"><i class="{{ link.class }}"></i></a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+
+        {# Conditional clearfix #}
+        <div class="visible-sm-block clearfix"></div>
+
+        {# Logo #}
+        <div class="col-md-4 col-md-pull-8 footer-col">
+            <div class="logo-footer"></div>
+        </div>
+
+    </div>
+</footer>

@@ -1,0 +1,3 @@
+"""
+Buffered storage app
+"""

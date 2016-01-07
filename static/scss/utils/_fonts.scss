@@ -1,0 +1,16 @@
+/**
+ * Font helpers
+ */
+
+@mixin regular {
+    font-weight: 400;
+    font-style: normal;
+}
+
+@mixin bold {
+    font-weight: 700;
+}
+
+@mixin italic {
+    font-style: italic;
+}

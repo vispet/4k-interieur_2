@@ -1,0 +1,60 @@
+/**
+ * Navigation
+ */
+
+@import "compass/css3/background-size";
+@import "compass/css3/border-radius";
+@import "utils/fonts";
+
+#main-navigation {
+    text-transform: uppercase;
+    border-bottom-color: $brown;
+    @include bold();
+
+    .navbar-header {
+        position: relative;
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar-brand {
+        display: block;
+        width: 50px;
+        padding: 0;
+        margin: 0;
+        height: 50px;
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        @include background-size(contain);
+    }
+
+    .navbar-collapse {
+        border-top-color: $brown;
+        @media (min-width: $grid-float-breakpoint) {
+            padding-left: 80px;
+        }
+    }
+
+    .navbar-toggle {
+        &, &:active, &:focus {
+            @include border-radius(0);
+            color: $brown;
+            background-color: transparent;
+        }
+
+        &:hover {
+            color: $white;
+            background-color: $brown;
+        }
+    }
+
+    .navbar-social {
+        @media (max-width: $grid-float-breakpoint-max) {
+            li {
+                display: inline-block;
+            }
+        }
+    }
+
+}

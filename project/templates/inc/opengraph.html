@@ -1,0 +1,47 @@
+{% load resize from simple_resizer %}
+{% load static from staticfiles %}
+{% load to_locale from utilities %}
+
+{% block opengraph %}
+
+    {# Facebook app id #}
+    {# <meta property="fb:app_id" content="553701434804306" /> #}
+
+    {# Title setting #}
+    {% if title %}
+        <meta property="og:title" content="{{ title }}" />
+        <meta property="og:site_name" content="{{ site_settings.title }}" />
+    {% else %}
+        <meta property="og:title" content="{{ site_settings.title }}" />
+    {% endif %}
+
+    {# Type setting => defaults to website #}
+    <meta property="og:type" content="website" />
+
+    {# Page absolute url #}
+    <meta property="og:url" content="{{ request.build_absolute_uri }}" />
+
+    {# Page image (s) #}
+    {% for image in og_images %}
+        {# Render per image in right format (look up) #}
+        <meta property="og:image" content="{% resize image 1200 630 crop=True %}" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+    {% empty %}
+        {# Default to logo (static file) #}
+        <meta property="og:image" content="{% static "img/bitmap/opengraph.jpg" %}" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+    {% endfor %}
+
+    {# Page locale #}
+    <meta property="og:locale" content="{{ LANGUAGE_CODE|to_locale }}" />
+
+    {# Page description #}
+    {% if og_description %}
+        <meta property="og:description" content="{{ og_description|truncatechars:500 }}" />
+    {% elif site_settings.description %}
+        {# Default description #}
+        <meta property="og:description" content="{{ site_settings.description|truncatechars:500 }}" />
+    {% endif %}
+{% endblock %}

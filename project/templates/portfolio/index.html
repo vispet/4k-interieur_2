@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load column from utilities %}
+{% load pagination from utilities %}
+{% load resize from simple_resizer %}
+
+{% block body_class %}project-index{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div class="projects">
+        <div class="row infinite-container">
+            {% for project in projects %}
+            <div class="{% column projects|length "md" 4 %} {% column projects|length "sm" 3 %} infinite-item">
+                <a href="{{ project.get_absolute_url }}" title="{{ project.title }}" class="project">
+                    <img class="img-stretch" src="{% resize project.image 585 585 crop=True %}" />
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {# Paginator #}
+    {% pagination projects "portfolio:index" "portfolio:page" %}
+
+</div>
+{% endblock %}

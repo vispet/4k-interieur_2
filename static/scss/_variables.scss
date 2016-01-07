@@ -1,0 +1,43 @@
+/**
+ * Variable definition file
+ */
+
+// colors
+$white:         #fff;
+$brown:         #b26300;
+$light-brown:   mix($brown, $white, 60%);
+$dark-grey:     #333;
+$light-grey:    #bbb;
+
+// Set font
+$font-family-sans-serif: "Roboto", sans-serif;
+
+// Set navbar
+$navbar-height:                         80px;
+$navbar-border-radius:                  0;
+$navbar-default-link-color:             $brown;
+$navbar-default-link-hover-color:       $brown;
+$navbar-default-link-active-color:      $brown;
+$navbar-default-link-active-bg:         transparent;
+$navbar-default-bg:                     $white;
+
+// Navbar toggle
+$navbar-default-toggle-hover-bg:        $brown;
+$navbar-default-toggle-border-color:    $brown;
+
+// Grid
+$grid-gutter-width: 10px;
+
+// Pagination
+$pagination-color: $dark-grey;
+$pagination-bg: $white;
+$pagination-border: $brown;
+$pagination-hover-color: $white;
+$pagination-hover-bg: $brown;
+$pagination-hover-border: $brown;
+$pagination-active-color: $white;
+$pagination-active-bg: $brown;
+$pagination-active-border: $brown;
+$pagination-disabled-color: $light-grey;
+$pagination-disabled-bg: $white;
+$pagination-disabled-border: $brown;

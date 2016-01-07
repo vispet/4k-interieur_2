@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load staticfiles %}
+{% load strip_newlines from utilities %}
+{% load get_solo from solo_tags %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_solo "configuration.GeneralSettings" as site_settings %}
+<html prefix="og: http://ogp.me/ns#" lang="{{ LANGUAGE_CODE }}" class="{% block html_class %}{% endblock %}">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% if site_settings.description %}
+        <meta name="description" content="{{ site_settings.description|strip_newlines }}">
+        {% endif %}
+
+        {% include "inc/opengraph.html" %}
+
+        <title>{{ site_settings.title }}{% if title %} | {{ title }}{% endif %}</title>
+
+        <!-- Favicons -->
+        {% include "generated/favicons.html" %}
+
+        <!-- Custom CSS -->
+        <link href="{% static "css/style.css" %}" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="{% static "js/html5shiv.min.js" %}"></script>
+            <script src="{% static "js/respond.js" %}"></script>
+        <![endif]-->
+
+        <!-- Icon Loader -->
+        {% include "inc/icon-loader.html" %}
+
+        <script>window.STATIC_ROOT="{% static "" %}";</script>
+
+    </head>
+
+    <body id="page-top" class="{% block body_class %}{% endblock %}">
+
+        {% block body %}
+
+            {# Navigation #}
+            <header>
+            {% include "inc/navigation.html" %}
+            </header>
+
+            {# Content #}
+            <main id="main-content" class="{% block main_content_class %}{% endblock %}">
+                {% block content %}{% endblock %}
+            </main>
+
+            {% include "inc/footer.html" %}
+
+            {# JavaScript #}
+            {% block scripts %}
+                <script src="{% static "js/main.js" %}"></script>
+            {% endblock scripts %}
+
+        {% endblock %}
+
+    </body>
+
+</html>

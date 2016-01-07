@@ -1,0 +1,8 @@
+/**
+ * Enhance image responsive by stretching
+ */
+
+.img-stretch {
+    @extend .img-responsive;
+    width: 100%;
+}

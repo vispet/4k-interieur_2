@@ -1,0 +1,19 @@
+{# A social sharing include #}
+
+<ul class="sharing">
+
+    {# Facebook #}
+    <li>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri|urlencode }}" target="_blank">
+            <i class="fontello-facebook"></i>
+        </a>
+    </li>
+
+    {# Twitter #}
+    <li>
+        <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri|urlencode }}&text={{ twitter_text|urlencode }}" target="_blank">
+            <i class="fontello-twitter"></i>
+        </a>
+    </li>
+
+</ul>

@@ -1,0 +1,60 @@
+{# Navigation include #}
+{% load trans from i18n %}
+{% load active_url from utilities %}
+{% load active_url_strict from utilities %}
+
+
+<nav id="main-navigation" class="navbar navbar-default navbar-fixed-top">
+
+    <div class="container-fluid container-extra-margin">
+
+        {# Brand and toggle get grouped for better mobile display #}
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navigation-collapse" aria-expanded="false">
+                <span class="sr-only">{% trans "Open menu" %}</span>
+                <i class="fontello-menu"></i>
+            </button>
+            <a class="navbar-brand" {% if request|active_url_strict:"home:index" %}href="#page-top"{% else %}href="{% url "home:index" %}"{% endif %}>
+                <span class="sr-only">4k Interieur</span>
+            </a>
+        </div>
+
+        {# Collect the nav links, forms, and other content for toggling #}
+        <div class="collapse navbar-collapse" id="main-navigation-collapse">
+
+            {# Main navigation #}
+            <ul class="navbar-main nav navbar-nav">
+
+                {# Portfolio index #}
+                <li {% if request|active_url:"portfolio:index" %}class="active"{% endif %}>
+                    <a href="{% url "portfolio:index" %}">{% trans "Projecten" %}</a>
+                </li>
+
+                {# News index #}
+                <li {% if request|active_url:"news:index" %}class="active"{% endif %}>
+                    <a href="{% url "news:index" %}">{% trans "Nieuws" %}</a>
+                </li>
+
+                {# About index #}
+                <li {% if request|active_url:"about:index" %}class="active"{% endif %}>
+                    <a href="{% url "about:index" %}">{% trans "Over ons" %}</a>
+                </li>
+
+                {# Contact index #}
+                <li {% if request|active_url:"contact:index" %}class="active"{% endif %}>
+                    <a href="{% url "contact:index" %}">{% trans "Contact" %}</a>
+                </li>
+
+            </ul>
+
+            {# Social links #}
+            <ul class="navbar-social nav navbar-nav navbar-right">
+                {% for link in site_settings.social %}
+                <li><a href="{{ link.url }}"><i class="{{ link.class }}"></i></a></li>
+                {% endfor %}
+            </ul>
+
+        </div>{# /.navbar-collapse #}
+
+    </div>{# /.container-fluid #}
+</nav>

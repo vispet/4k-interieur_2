@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+# Should scaffold a dokku install from scratch to an unknown remote or local

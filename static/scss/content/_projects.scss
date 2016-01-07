@@ -1,0 +1,20 @@
+/**
+ * Style projects
+ */
+
+.project-index #main-content {
+
+    .projects {
+
+        // Set first
+        padding-top: $grid-gutter-width;
+
+        .project {
+            // Set v-gutter
+            margin-bottom: $grid-gutter-width;
+            display: block;
+        }
+
+    }
+
+}

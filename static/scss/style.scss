@@ -1,0 +1,25 @@
+/**
+ * The style
+ */
+
+// Compass config
+@import "../../build-tools/generated-assets-build-dir";
+@import "compass/configuration";
+@include compass-configuration(
+    $fonts-path: $assets-build-dir + "/fonts",
+    $images-path: $assets-build-dir + "/img",
+    $relative-assets: true
+);
+
+@import "variables";
+
+@import "fontello";
+
+@import "bootstrap-compass";
+@import "bootstrap";
+
+@import "utils/img-stretch";
+
+@import "navigation";
+@import "footer";
+@import "content";
